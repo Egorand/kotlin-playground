@@ -15,11 +15,30 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
+
+// won't compile without '?', since 'null' can be returned
+fun parseInt(arg: String): Int? {
+  try {
+    return arg.toInt()
+  } catch (e: NumberFormatException) {
+    return null
+  }
+}
 
 fun main(args: Array<String>) {
-  if (args.size == 0) return
+  if (args.size < 2) {
+    println("Two arguments expected")
+    return
+  }
 
-  // awesome!
-  println("First arg: ${args[0]}")
+  val x = parseInt(args[0])
+  val y = parseInt(args[1])
+
+  // won't compile, since x and y can be null
+  //  println(x * y)
+
+  if (x != null && y != null) {
+    println(x * y)
+  }
 }

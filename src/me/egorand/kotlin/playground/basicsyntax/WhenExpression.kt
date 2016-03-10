@@ -15,7 +15,7 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
 
 fun cases(obj: Any) {
   when (obj) {

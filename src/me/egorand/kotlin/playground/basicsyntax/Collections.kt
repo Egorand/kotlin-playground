@@ -15,31 +15,27 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
 
-fun getStringLengthSmart(arg: String): Int? {
-  if (arg is String)
-  // don't need an explicit cast
-    return arg.length
-  return null
+fun printNames(names: List<String>) {
+  for (name in names) {
+    println(name)
+  }
 }
 
-fun getStringLengthSmarter(arg: String): Int? {
-  if (arg !is String)
-    return null
-  // from now on compiler sees arg as a String
-  return arg.length
-}
+fun hasName(names: List<String>, name: String): Boolean = name in names
 
-fun getStringLengthSmartest(arg: String): Int? {
-  // can call String methods in the same if block which checks type!
-  if (arg is String && arg.length > 0)
-    return arg.length
-  return null
+fun doLotsOfFancyStuff(names: List<String>) {
+  names
+      .filter { it.startsWith("A") }
+      .sortedBy { it }
+      .map { it.toUpperCase() }
+      .forEach { println(it) }
 }
 
 fun main(args: Array<String>) {
-  println(getStringLengthSmart("abc"))
-  println(getStringLengthSmarter("abcd"))
-  println(getStringLengthSmartest("abcde"))
+  val names = listOf("Alice", "Bob", "Adam", "Chris", "Erica")
+  printNames(names)
+  println(hasName(names, "Bob"))
+  doLotsOfFancyStuff(names)
 }

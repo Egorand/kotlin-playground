@@ -15,27 +15,22 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
 
-fun printNames(names: List<String>) {
-  for (name in names) {
-    println(name)
+fun isInRange(n: Int, from: Int, to: Int) =
+    if (n in from..to) true else false
+
+fun indexInArray(i: Int, a: IntArray) =
+    if (i !in 0..a.lastIndex) false else true
+
+fun printRange(from: Int, to: Int) {
+  for (n in from..to) {
+    print("${n} ")
   }
 }
 
-fun hasName(names: List<String>, name: String): Boolean = name in names
-
-fun doLotsOfFancyStuff(names: List<String>) {
-  names
-      .filter { it.startsWith("A") }
-      .sortedBy { it }
-      .map { it.toUpperCase() }
-      .forEach { println(it) }
-}
-
 fun main(args: Array<String>) {
-  val names = listOf("Alice", "Bob", "Adam", "Chris", "Erica")
-  printNames(names)
-  println(hasName(names, "Bob"))
-  doLotsOfFancyStuff(names)
+  println(isInRange(5, 2, 7))
+  println(indexInArray(1, intArrayOf(1, 2, 3)))
+  printRange(3, 6)
 }

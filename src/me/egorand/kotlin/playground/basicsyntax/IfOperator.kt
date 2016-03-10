@@ -15,18 +15,18 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
+
+fun maxVerbose(a: Int, b: Int): Int {
+  if (a > b)
+    return a
+  else
+    return b
+}
+
+fun maxShort(a: Int, b: Int) = if (a > b) a else b
 
 fun main(args: Array<String>) {
-  // standard
-  for (arg in args) {
-    print("${arg} ")
-  }
-
-  println()
-
-  // more interesting
-  for (i in args.indices) {
-    print("${args[i]} ")
-  }
+  println(maxVerbose(4, 3))
+  println(maxShort(4, 3))
 }

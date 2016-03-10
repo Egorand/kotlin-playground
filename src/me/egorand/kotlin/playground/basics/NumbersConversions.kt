@@ -15,30 +15,23 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basics
 
-// won't compile without '?', since 'null' can be returned
-fun parseInt(arg: String): Int? {
-  try {
-    return arg.toInt()
-  } catch (e: NumberFormatException) {
-    return null
-  }
+fun noExplicitConversion() {
+  val a: Int? = 1
+  //  val b: Long = a     // won't compile!
+  //  print(a == b)       // what would that yield?
+
+  val b: Byte = 1
+  //  val i: Int = b      // this is an error
+
+  val i: Int = b.toInt()  // but this works!
+  println(i)
+
+  val l = 2L + 3          // this will work, types are inferred automatically
+  println(l)
 }
 
 fun main(args: Array<String>) {
-  if (args.size < 2) {
-    println("Two arguments expected")
-    return
-  }
-
-  val x = parseInt(args[0])
-  val y = parseInt(args[1])
-
-  // won't compile, since x and y can be null
-  //  println(x * y)
-
-  if (x != null && y != null) {
-    println(x * y)
-  }
+  noExplicitConversion()
 }

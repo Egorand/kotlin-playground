@@ -15,22 +15,11 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
-
-fun isInRange(n: Int, from: Int, to: Int) =
-    if (n in from..to) true else false
-
-fun indexInArray(i: Int, a: IntArray) =
-    if (i !in 0..a.lastIndex) false else true
-
-fun printRange(from: Int, to: Int) {
-  for (n in from..to) {
-    print("${n} ")
-  }
-}
+package me.egorand.kotlin.playground.basicsyntax
 
 fun main(args: Array<String>) {
-  println(isInRange(5, 2, 7))
-  println(indexInArray(1, intArrayOf(1, 2, 3)))
-  printRange(3, 6)
+  if (args.size == 0) return
+
+  // awesome!
+  println("First arg: ${args[0]}")
 }

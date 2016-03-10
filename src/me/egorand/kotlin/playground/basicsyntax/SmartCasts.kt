@@ -15,18 +15,31 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
+package me.egorand.kotlin.playground.basicsyntax
+
+fun getStringLengthSmart(arg: String): Int? {
+  if (arg is String)
+  // don't need an explicit cast
+    return arg.length
+  return null
+}
+
+fun getStringLengthSmarter(arg: String): Int? {
+  if (arg !is String)
+    return null
+  // from now on compiler sees arg as a String
+  return arg.length
+}
+
+fun getStringLengthSmartest(arg: String): Int? {
+  // can call String methods in the same if block which checks type!
+  if (arg is String && arg.length > 0)
+    return arg.length
+  return null
+}
 
 fun main(args: Array<String>) {
-  // val defines an immutable variable
-  val a: Int = 1  // explicit type
-  val b = 1       // type inferred
-  //  val c       // won't work
-  val c: Int      // need explicit type if no initialization
-  c = 5
-  //  c = 6       // nope, c is val, hence immutable
-
-  // var defines a mutable variable
-  var x = 5
-  x += 1          // no problem
+  println(getStringLengthSmart("abc"))
+  println(getStringLengthSmarter("abcd"))
+  println(getStringLengthSmartest("abcde"))
 }

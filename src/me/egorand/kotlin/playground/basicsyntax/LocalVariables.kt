@@ -15,18 +15,18 @@
  *
  */
 
-package me.egorand.kotlin.playground.basic
-
-fun maxVerbose(a: Int, b: Int): Int {
-  if (a > b)
-    return a
-  else
-    return b
-}
-
-fun maxShort(a: Int, b: Int) = if (a > b) a else b
+package me.egorand.kotlin.playground.basicsyntax
 
 fun main(args: Array<String>) {
-  println(maxVerbose(4, 3))
-  println(maxShort(4, 3))
+  // val defines an immutable variable
+  val a: Int = 1  // explicit type
+  val b = 1       // type inferred
+  //  val c       // won't work
+  val c: Int      // need explicit type if no initialization
+  c = 5
+  //  c = 6       // nope, c is val, hence immutable
+
+  // var defines a mutable variable
+  var x = 5
+  x += 1          // no problem
 }
