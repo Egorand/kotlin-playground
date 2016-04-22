@@ -44,15 +44,15 @@ fun main(args: Array<String>) {
   val reentrantLock = ReentrantLock()
 
   // passing the function ref
-  val result1 = lock(reentrantLock, ::syncProduceString)
+  val result1 = withLock(reentrantLock, ::syncProduceString)
   println(result1)
 
   // passing a lambda expression
-  val result2 = lock(reentrantLock, { syncProduceString() })
+  val result2 = withLock(reentrantLock, { syncProduceString() })
   println(result2)
 
   // valid syntax if function is the last parameter of the method
-  val result3 = lock(reentrantLock) {
+  val result3 = withLock(reentrantLock) {
     syncProduceString()
   }
   println(result3)
