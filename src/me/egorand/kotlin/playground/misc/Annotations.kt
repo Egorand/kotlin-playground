@@ -17,22 +17,25 @@
 
 package me.egorand.kotlin.playground.misc
 
-class AA {
-  inner class B {
-    fun Int.foo() {
-      val a = this@AA
-      val b = this@B
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION,
+    AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.EXPRESSION,
+    AnnotationTarget.FIELD, AnnotationTarget.PROPERTY_GETTER)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class Fancy
 
-      val c = this
-      val c1 = this@foo
-
-      val funLit = lambda@ fun String.() {
-        val d = this
-      }
-
-      val funLit2 = { s: String ->
-        val d = this
-      }
-    }
+@Fancy class Foo {
+  @Fancy fun baz(@Fancy foo: Int): Int {
+    return (@Fancy 1)
   }
 }
+
+annotation class Suspendable
+
+// can also annotate lambda expressions
+val f = @Suspendable { Thread.sleep(1000) }
+
+// use-site annotation targets
+class Example(@field:Fancy val foo: Int,
+              @get:Fancy val bar: Int,
+              @param:Fancy val quux: Int)

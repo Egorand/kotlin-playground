@@ -17,22 +17,20 @@
 
 package me.egorand.kotlin.playground.misc
 
-class AA {
-  inner class B {
-    fun Int.foo() {
-      val a = this@AA
-      val b = this@B
+import java.io.File
+import java.io.FileInputStream
 
-      val c = this
-      val c1 = this@foo
+fun parseString(str: String): String = throw RuntimeException()
 
-      val funLit = lambda@ fun String.() {
-        val d = this
-      }
-
-      val funLit2 = { s: String ->
-        val d = this
-      }
-    }
+fun main(args: Array<String>) {
+  // try-catch-finally blocks are expressions in Kotlin
+  val parsed = try {
+    parseString("abc")
+  } catch(e: RuntimeException) {
+    null
   }
+  println(parsed)
+
+  val fout = FileInputStream(File("nonexistent")) // no more checked exceptions!
+  println(fout)
 }

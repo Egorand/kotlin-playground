@@ -17,22 +17,22 @@
 
 package me.egorand.kotlin.playground.misc
 
-class AA {
-  inner class B {
-    fun Int.foo() {
-      val a = this@AA
-      val b = this@B
+class MyClass
 
-      val c = this
-      val c1 = this@foo
+fun isOdd(num: Int) = num % 2 != 0
 
-      val funLit = lambda@ fun String.() {
-        val d = this
-      }
+fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C {
+  return { x -> f(g(x)) }
+}
 
-      val funLit2 = { s: String ->
-        val d = this
-      }
-    }
-  }
+fun main(args: Array<String>) {
+  val cls = MyClass::class
+  println(cls)
+
+  val numbers = listOf(1, 2, 3)
+  println(numbers.filter(::isOdd))
+
+  val oddLength = compose(::isOdd, String::length)
+  val strings = listOf("a", "ab", "abc")
+  println(strings.filter(oddLength))
 }
